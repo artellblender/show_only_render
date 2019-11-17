@@ -1,4 +1,4 @@
-# show_only_render
+# Show Only Render
 Show only renderable objects (similar to the eponym feature in Blender 2.79)
 
 Install the .py file in Blender
