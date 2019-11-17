@@ -12,40 +12,6 @@ bl_info = {
     }
 
 
-class SOR_OT_toggle_visibility(bpy.types.Operator):
-    bl_description = "Toggle to show only rendererable objects"
-    bl_idname = 'sor.toggle'
-    bl_label = "show_only_render"
-    bl_options = set({'REGISTER', 'UNDO'})
-
-   
-    """
-    @classmethod
-    def poll(self, context):
-        return bpy.data.materials
-    """
-    def invoke(self, context, event):
-        return self.execute(context)
-
-    def execute(self, context):
-        if self.mute == 'toggle':
-            mute = None
-        elif self.mute == 'off':
-            mute = False
-        elif self.mute == 'on':
-            mute = True
-
-        for mat in bpy.data.materials:
-            nodes = getattr(mat.node_tree, 'nodes', [])
-            for node in nodes:
-                if isinstance(node, bpy.types.ShaderNodeNormalMap):
-                    if mute is None:
-                        mute = node.mute
-                    node.mute = not mute
-
-        return {'FINISHED'}
-
-
 class SOR_PT_menu(bpy.types.Panel):
     bl_category = ""
     bl_label = ""
@@ -75,7 +41,6 @@ def update_show_only_render(self, context):
             
             
 classes = (
-    SOR_OT_toggle_visibility,
     SOR_PT_menu,
     )
     
